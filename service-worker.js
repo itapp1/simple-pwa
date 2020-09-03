@@ -1,4 +1,4 @@
-const CACHE_NAME = 'SW-007';
+const CACHE_NAME = 'SW-001';
 const toCache = [
     '/',
     'assets/js/web.webmanifest',
@@ -33,10 +33,10 @@ self.addEventListener('activate', function(event) {
         caches.keys()
         .then((keyList) => {
             return Promise.all(keyList.map((key) => {
-            if (key !== CACHE_NAME) {
-                console.log('[ServiceWorker] Removing old cache', key)
-                return caches.delete(key)
-            }
+                if (key !== CACHE_NAME) {
+                    console.log('[ServiceWorker] Removing old cache', key)
+                    return caches.delete(key)
+                }
             }))
         })
         .then(() => self.clients.claim())
